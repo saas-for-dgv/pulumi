@@ -18,10 +18,10 @@ pulumi.runtime.setMocks({
 );
 
 
-describe("Infrastructure", function() {
+describe("Infrastructures", function() {
     let infra: typeof import("./tryme");
 
-    before(async function() {
+    beforeAll(async function() {
         // It's important to import the program _after_ the mocks are defined.
         infra = await import("./tryme");
     })
