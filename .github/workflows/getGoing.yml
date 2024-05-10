@@ -1,0 +1,39 @@
+name: getGoing
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Create or Destroy (Update is default)'
+        required: true
+        default: 'update'
+
+env:
+  PULUMI_STACK: ${{ secrets.PULUMI_STACK }}  # Replace with your secret name
+  PULUMI_WORKDIR: "my_pulumi_dir"  # Adjust the directory name
+
+jobs:
+  pulumi_action:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PAT_TOKEN }}
+
+    - name: Set Git Identity
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+
+    - uses: pulumi/actions@v4  # Use the latest version (v4)
+      with:
+        command: ${{ github.event.inputs.action }}  # Use the workflow_dispatch input
+        stack-name: ${{ env.PULUMI_STACK }}
+        work-dir: ${{ env.PULUMI_WORKDIR }}
+        # Optional: Specify a Pulumi version (defaults to latest)
+        pulumi-version: '3.3.0'
