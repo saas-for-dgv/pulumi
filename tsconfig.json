@@ -1,19 +1,13 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "outDir": "bin",
-        "target": "es2016",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "experimentalDecorators": true,
-        "pretty": true,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitReturns": true,
-        "forceConsistentCasingInFileNames": true
+      "target": "ESNext",
+      "module": "CommonJS",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "outDir": "./dist"
     },
-    "files": [
-        "src/index.ts"
-    ],
-    "include": ["src/**/*.ts"] // Specify source files to compile
-}
+    "include": ["**/*.ts"], // Only include source files under 'src' directory
+    "exclude": ["node_modules"] // Exclude test files from compilation
+  }
+  
