@@ -1,0 +1,21 @@
+# This file defines the Pulumi program configuration.
+
+# Set the runtime to Node.js with TypeScript enabled
+runtime:
+  name: nodejs
+  options:
+    typescript: true
+
+# Define steps to be run in the pipeline (replace with your actual pulumi commands)
+steps:
+  - name: Preview infrastructure changes
+    run: pulumi preview
+
+  - name: Update infrastructure (if desired)
+    run: pulumi up
+
+# Secrets can be referenced from environment variables in the pipeline
+# Replace 'PULUMI_STACK' and 'PULUMI_ACCESS_TOKEN' with your actual secret names
+env:
+  PULUMI_STACK: $(PULUMI_STACK)
+  PULUMI_ACCESS_TOKEN: $(PULUMI_ACCESS_TOKEN)

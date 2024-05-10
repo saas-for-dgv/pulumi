@@ -1,0 +1,24 @@
+{
+  "name": "infra-with-pulumi",
+  "version": "1.0.0",
+  "description": "For developing and maintaining infra with pulumi.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test2": "jest",
+    "test": "mocha --require ts-node/register src/**/*.test.ts"
+  },
+  "author": "Koustubh Desai",
+  "license": "ISC",
+  "dependencies": {
+    "@pulumi/aws": "^6.34.0",
+    "@pulumi/pulumi": "^3.115.2",
+    "@pulumi/random": "^4.16.1",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/mocha": "^10.0.6",
+    "mocha": "^10.4.0",
+    "ts-node": "^10.9.2"
+  }
+}
